@@ -138,7 +138,7 @@ PlayList.prototype = {
 	 * Callback:
 	 *    MessageAdded: function(messageItem) -> return none
 	 *    MessageRemoveEvent: function(messageItem, remover) -> return true if
-	 *        responsinility for the deletion is taken, false otherwise
+	 *        responsibility for the deletion is taken, false otherwise
 	 */
 	RegisterCallback : function(eventName, callback) {
 		<<pl-register-callback>>
@@ -217,7 +217,7 @@ The init module is only the instanciation of Playlist, UserDetection and binding
 		}
 	})(this));
 	
-	// message player is instantiated at the demand, and when it has finshed playing or has been stopped the reference is reset to null by callback
+	// message player is instantiated at the demand, and when it has finished playing or has been stopped the reference is reset to null by callback
 	this._MessagePlayer = null;
 ```
 
@@ -277,7 +277,7 @@ If a message is removed when messages are reading, we delayed the deletion until
 	}
 ```
 
-Finally we need to create the method that look if messages are available to read, and automate the deletion of the MessagePlayer when message have finshed to read.
+Finally we need to create the method that look if messages are available to read, and automate the deletion of the MessagePlayer when message have finished to read.
 If there is new messages, we read only new ones.
 
 ```

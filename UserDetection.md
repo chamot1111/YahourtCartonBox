@@ -5,7 +5,7 @@ We use the camera to take a picture every 2 seconds. We use the `raspistill` com
 
 raspistill -t 0 -n -w 32 -h 32 -e png -o /tmp/test.png
 
-When the picutre has been taken, we load the png file with the `png-js`module. We analyze the picture to find if there is the mean value is above a threshold.
+When the picture has been taken, we load the png file with the `png-js`module. We analyze the picture to find if there is the mean value is above a threshold.
 
 If there is no light, the box is closed and therefore nobody is listening.
 
@@ -34,7 +34,7 @@ Then we use png-js to decode the image.
 	});
 ```
 
-Now we just have to write the isLightPresent function. Param pixels is a 1D array, where each pixel take 4 indexes: R, G, B , A. Each value is between 0 - 255.
+Now we just have to write the isLightPresent function. The parameter *pixels* is a 1D array, where each pixel take 4 indexes: R, G, B , A. Each value is between 0 - 255.
 
 ```
 <<isLightPresent>> =

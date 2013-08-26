@@ -39,7 +39,7 @@ For best performance, when we want access a message by this id, we must use a ha
 	this.ConfFile = confFile;
 ```
 
-When the playlist object is initialized, it loads thestore from a conf file:
+When the playlist object is initialized, it loads the store from a conf file:
 
 ```
 <<./conf/playlist.js>> =

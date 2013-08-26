@@ -4,7 +4,7 @@ WebServer
 
 We use express.js for the server.
 
-Fisrt install express with command:
+First install express with command:
 
 ```
 npm install -g express
@@ -97,7 +97,7 @@ _Warning_: This technique is not sufficient for complete security. For example t
 
 ### Salt key generator
 
-   We make it more general than salt key generator beacause it's the same functionnality than the token generator. We just add the possibility to associate data to a key.
+   We make it more general than salt key generator because it's the same functionality than the token generator. We just add the possibility to associate data to a key.
 
    We just use a hashmap to store the generated as key and the creation time as value. And we launch a cleaner function every 10 seconds to clean old keys.
 
