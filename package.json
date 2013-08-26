@@ -1,0 +1,16 @@
+{
+  "name": "YahourCartonBox",
+  "author": "Alan Crouau",
+  "version": "0.0.1",
+  "homepage": "https://github.com/chamot1111/YahourtCartonBox",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.1.0",
+    "ejs": "*",
+    "png-js": "*"
+  },
+  "devDependencies": {
+  }
+}

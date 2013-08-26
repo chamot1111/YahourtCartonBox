@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Yahourt Carton Box</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+
+      .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+
+    </style>
+</head>
+<body>
+
+  <script type="text/x-handlebars" data-template-name="index">
+    <div class="container">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        {{view Ember.TextField class="input-block-level" valueBinding="login" placeholder="Login"}}
+        {{view Ember.TextField type="password" class="input-block-level" valueBinding="password" placeholder="Password"}}
+        {{#if hasError}}
+          <div class="alert alert-error fade in">
+            {{errorMessage}}
+          </div>
+        {{/if}}
+        <button class="btn btn-large btn-primary" type="submit" {{action 'loginAction'}}>Sign in</button>
+        {{#if isLoading}}
+          <img src="img/load2.gif">
+        {{/if}}
+      </form>
+
+    </div> <!-- /container -->
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="list">
+
+<!-- Part 1: Wrap all page content here -->
+    <div id="wrap">
+
+      <!-- Begin page content -->
+      <div class="container">
+        <div class="page-header">
+          <h1>List</h1>
+        </div>
+        {{#if hasError}}
+          <div class="alert alert-error fade in">
+            {{errorMessage}}
+          </div>
+        {{/if}}
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Username</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each item in model}}
+                <tr>
+                  <td>{{item.name}}</td>
+                  <td>{{item.date}}</td>
+                  <td>{{item.user}}</td>
+                  <td><a class="btn btn-small" {{action 'deleteIntention' item}}><i class="icon-remove-sign"></i> Delete</a></td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+           
+          <!-- Modal -->
+          <div id="deleteModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3 id="myModalLabel">Delete {{selectedMessage.name}}</h3>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+              <button class="btn btn-primary" {{action 'delete' selectedMessage}}>Delete</button>
+            </div>
+          </div>
+
+          {{#view App.TriggerJsView}}
+          <form id="upload-form" enctype="multipart/form-data">
+          <fieldset>
+            <legend>Send a message</legend>
+            <input id="form-hidden-token" type="hidden" name="token" value="" />
+            <label>Message audio file</label>
+            <input type="file" name="message">
+            <br/>
+            <button type="submit" class="btn" {{action 'uploadFile'}}>Upload</button>
+          </fieldset>
+          </form>
+          {{/view}}
+          
+          {{#if isUploading}}
+          <div class="progress progress-striped">
+            <div id="upload-progress" class="bar" style="width: 20%;"></div>
+          </div>
+          {{/if}}
+
+      </div>
+
+      <div id="push"></div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">YahourtCartonBox</p>
+      </div>
+    </div>
+
+  
+  </script>
+
+
+  <script src="js/libs/jquery-1.9.1.js"></script>
+  <script src="js/libs/rsvp-latest.js"></script>
+  <script src="js/libs/sha1.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/libs/bootstrap-filestyle.min.js"></script>
+  <script src="js/libs/handlebars-1.0.0-rc.4.js"></script>
+  <script src="js/libs/ember-1.0.0-rc.6.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
